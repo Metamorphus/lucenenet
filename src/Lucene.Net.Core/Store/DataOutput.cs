@@ -235,6 +235,7 @@ namespace Lucene.Net.Store
         /// <seealso cref= DataInput#readString() </seealso>
         public virtual void WriteString(string s)
         {
+            if (s == null) s = "";
             var utf8Result = new BytesRef(10);
             UnicodeUtil.UTF16toUTF8(s.ToCharArray(), 0, s.Length, utf8Result);
             WriteVInt(utf8Result.Length);
